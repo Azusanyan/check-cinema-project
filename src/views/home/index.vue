@@ -90,11 +90,12 @@
                             <div v-for="(allM, index) in allMovie">
                                 <div class="div-small">
                                     <span v-show="index !== 0">
-                                        <span :class="{ smallred: index < 3, smallblack: index > 2 }">{{ index + 1
-                                        }}</span>&nbsp;&nbsp;{{ allM.name }}</span>
+                                        <span :class="{ smallred: index < 3, smallblack: index > 2 }">
+                                            {{ index + 1 }}</span>&nbsp;&nbsp;<span class="movieNameFont">{{ allM.name }}</span>
+                                    </span>
                                     <el-image style="width: 100px; height: 100px"
                                         :src="'http://localhost:8080/' + allM.posters" v-show="index === 0" />
-                                    <span>{{ allM.boxOffice }}万
+                                    <span class="movieNameFont">{{ allM.boxOffice }}万
                                         <el-image style="width: 15px; height: 15px"
                                             src="http://localhost:8888/src/assets/huo.png" />
                                     </span>
@@ -409,6 +410,10 @@ h3:after {
     color: #e50914;
     font-weight: bold;
     font-size: 1.1rem;
+}
+
+.movieNameFont {
+    color: #ffffff;
 }
 
 hr {

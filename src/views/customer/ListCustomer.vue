@@ -21,13 +21,11 @@
             <div class="content-wrapper">
                 <div class="app-container">
                     <div class="table-container">
-
-
                         <el-table :data="tableData" stripe style="width: 100%">
                             <el-table-column prop="name" label="用户名" />
                             <el-table-column prop="gender" label="性别">
                                 <template #default="scope">
-                                    <el-tag :type="scope.row.gender == '男' ? 'success' : 'primary'">{{ scope.row.flag ==
+                                    <el-tag :type="scope.row.gender == '男' ? 'success' : 'primary'">{{ scope.row.gender ==
                                         '男'
                                         ? '男' :
                                         '女' }}</el-tag>

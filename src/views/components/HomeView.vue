@@ -6,7 +6,7 @@
                 影厅影院管理系统
             </h1>
             <div style="display: flex; align-items: center;">
-                <el-avatar size="small" src="http://localhost:8080/files/a306cc1c1e424703ad72aca62e08c461.jpg"
+                <el-avatar size="small" :src="'http://localhost:8080/' + pic.value" 
                     fit="scale-down" class="user-img"></el-avatar>
                 <span class="info">
                     欢迎您回来
@@ -35,6 +35,7 @@
         </el-header>
         <el-container>
             <el-aside width="200px">
+                <!-- 根据后台返回的菜单树生成菜单，实现不同权限不同页面 -->
                 <SideBar :menuList="menus" />
             </el-aside>
             <el-container>
@@ -51,7 +52,7 @@
 import { useCinemaStore } from '@/stores/counter'
 import { useRouter, type Router } from 'vue-router'
 import { ElMessage } from 'element-plus';
-import { queryMenusByUserId } from '@/api/dao'
+import { queryMenusByUserId, getUserInfo } from '@/api/dao'
 import { ref, reactive, toRefs } from 'vue'
 import SideBar from '@/components/SideBar/SideBar.vue'
 
@@ -70,12 +71,14 @@ if (!myUserRstStore.userId || myUserRstStore.userId === -1) {
 }
 const userId = myUserRstStore.userId
 
-
 const menus = ref([])
+
+const pic = ref<String>('')
 
 const queryMenus = () => {
     queryMenusByUserId(userId).then(res => {
         menus.value = res.data.data
+        console.log(menus.value)
     })
 }
 queryMenus()
@@ -94,8 +97,6 @@ const handleCommand = (command: string | number | object) => {
         // 这里可以添加实际的路由跳转逻辑
     }
 }
-
-
 
 </script>
 
