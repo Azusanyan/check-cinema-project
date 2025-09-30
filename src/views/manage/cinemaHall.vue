@@ -35,7 +35,7 @@
                     </template>
 
                 </el-table-column>
-                
+
             </el-table>
             <div style="text-align: center;margin: 10px 0px;">
                 <el-pagination v-model:current-page="queryForm.pageNum" v-model:page-size="queryForm.pageSize"
